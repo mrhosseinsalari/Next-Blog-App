@@ -51,7 +51,7 @@ module.exports = {
         padding: "1rem",
       },
       fontFamily: {
-        sans: ["var(--font-vazir)", ...fontFamily.sans],
+        sans: ["var(--vazir-font)", ...fontFamily.sans],
       },
     },
   },
