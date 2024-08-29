@@ -1,4 +1,5 @@
 import Image from "next/image";
+// import Avatar from "../../../../public/images/avatar.png";
 
 async function PostList() {
   await new Promise((res) => setTimeout(() => res(), 2000));
@@ -12,15 +13,19 @@ async function PostList() {
     <div className="grid grid-cols-12 gap-8">
       {posts.map((post) => (
         <div
-          className="col-span-12 sm:col-span-6 lg:col-span-4 border 
-          border-secondary-100 p-2 rounded-lg"
+          className="col-span-12 sm:col-span-6 lg:col-span-4 border
+          border-secondary-300 p-2 rounded-lg"
         >
-          <Image
-            src={post.coverImageUrl}
-            alt={post.title}
-            width={400}
-            height={400}
-          />
+          <div className="relative block aspect-video overflow-hidden rounded-md">
+            <Image
+              className="object-cover object-center hover:scale-110 
+              transition-all duration-300 ease-out"
+              src={post.coverImageUrl}
+              alt={post.title}
+              fill
+              quality={80}
+            />
+          </div>
         </div>
       ))}
     </div>

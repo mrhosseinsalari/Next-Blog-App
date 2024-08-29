@@ -56,7 +56,7 @@ module.exports = {
     },
   },
   plugins: [
-    require("@tailwindcss/aspect-ratio"),
+    // require("@tailwindcss/aspect-ratio"),
     tailwindFormPlugin({
       strategy: "class",
     }),
