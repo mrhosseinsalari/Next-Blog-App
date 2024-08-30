@@ -1,10 +1,10 @@
 import { Suspense } from "react";
-import Loading from "./loading";
 import PostList from "./_components/PostList";
+import Spinner from "@/ui/Spinner";
 
 async function BlogPage() {
   return (
-    <Suspense fallback={<Loading />}>
+    <Suspense fallback={<Spinner />}>
       <PostList />
     </Suspense>
   );
