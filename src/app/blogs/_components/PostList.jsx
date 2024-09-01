@@ -13,7 +13,7 @@ async function PostList() {
   } = await res.json();
 
   return posts.length > 0 ? (
-    <div className="grid grid-cols-12 gap-8">
+    <div className="grid grid-cols-12 gap-8 mb-10">
       {posts.map((post) => (
         <div
           key={post._id}
