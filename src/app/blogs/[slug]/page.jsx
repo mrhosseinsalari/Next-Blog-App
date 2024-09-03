@@ -14,7 +14,7 @@ export async function generateMetadata({ params }) {
   const post = await getPostBySlug(params.slug);
 
   return {
-    title: `پست ${post?.title}` || "پست یافت نشد",
+    title: post ? `پست ${post.title}` : "پستی یافت نشد",
   };
 }
 

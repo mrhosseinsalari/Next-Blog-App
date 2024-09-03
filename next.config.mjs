@@ -16,6 +16,9 @@ const nextConfig = {
       fullUrl: true,
     },
   },
+  // experimental: {
+  //   ppr: true, => STATIC + DYNAMIC => PPR
+  // },
 };
 
 export default nextConfig;
