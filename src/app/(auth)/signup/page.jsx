@@ -8,6 +8,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { signupApi } from "@/services/authService";
 import toast from "react-hot-toast";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 
 // export const metadata = {
 //   title: "ثبت نام",
@@ -41,7 +42,7 @@ function Signup() {
     try {
       const { message } = await signupApi(data);
       toast.success(message);
-      router.push("/profile");
+      // router.push("/profile");
     } catch (error) {
       toast.error(error?.response?.data?.message);
     }
@@ -81,6 +82,9 @@ function Signup() {
           تایید
         </Button>
       </form>
+      <Link href="/signin" className="text-secondary-500 mt-6 text-center">
+        ورود به سایت
+      </Link>
     </div>
   );
 }
