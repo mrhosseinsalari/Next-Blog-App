@@ -1,4 +1,4 @@
-import { getPostBySlug, getPosts } from "@/services/postServices";
+import { getPostBySlug, getPosts } from "@/services/postService";
 import Image from "next/image";
 import { notFound } from "next/navigation";
 

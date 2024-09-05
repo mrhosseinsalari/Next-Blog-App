@@ -3,7 +3,7 @@ import CoverImage from "./CoverImage";
 import { ClockIcon } from "@heroicons/react/24/outline";
 import Author from "./Author";
 import PostInteraction from "./PostInteraction";
-import { getPosts } from "@/services/postServices";
+import { getPosts } from "@/services/postService";
 
 async function PostList() {
   // await new Promise((res) => setTimeout(() => res(), 1000));
