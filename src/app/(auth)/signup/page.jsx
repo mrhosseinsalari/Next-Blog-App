@@ -5,10 +5,8 @@ import RHFTextField from "@/ui/RHFTextField";
 import { useForm } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { signupApi } from "@/services/authService";
-import toast from "react-hot-toast";
-import { useRouter } from "next/navigation";
 import Link from "next/link";
+import { useAuth } from "@/context/AuthContext";
 
 // export const metadata = {
 //   title: "ثبت نام",
@@ -36,16 +34,10 @@ function Signup() {
     mode: "onTouched",
   });
 
-  const router = useRouter();
+  const { signup } = useAuth();
 
-  const onSubmit = async (data) => {
-    try {
-      const { message } = await signupApi(data);
-      toast.success(message);
-      // router.push("/profile");
-    } catch (error) {
-      toast.error(error?.response?.data?.message);
-    }
+  const onSubmit = async (values) => {
+    await signup(values);
   };
 
   return (

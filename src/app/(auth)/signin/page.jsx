@@ -1,13 +1,11 @@
 "use client";
 
-import { signinApi } from "@/services/authService";
+import { useAuth } from "@/context/AuthContext";
 import Button from "@/ui/Button";
 import RHFTextField from "@/ui/RHFTextField";
 import { yupResolver } from "@hookform/resolvers/yup";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
-import toast from "react-hot-toast";
 import * as yup from "yup";
 
 const schema = yup
@@ -27,16 +25,10 @@ function Signin() {
     mode: "onTouched",
   });
 
-  const router = useRouter();
+  const { signin } = useAuth();
 
-  const onSubmit = async (data) => {
-    try {
-      const { message } = await signinApi(data);
-      toast.success(message);
-      // router.push("/profile");
-    } catch (error) {
-      toast.error(error?.response?.data?.message);
-    }
+  const onSubmit = async (values) => {
+    await signin(values);
   };
 
   return (
