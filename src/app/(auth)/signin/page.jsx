@@ -3,6 +3,7 @@
 import { useAuth } from "@/context/AuthContext";
 import Button from "@/ui/Button";
 import RHFTextField from "@/ui/RHFTextField";
+import SpinnerMini from "@/ui/SpinnerMini";
 import { yupResolver } from "@hookform/resolvers/yup";
 import Link from "next/link";
 import { useForm } from "react-hook-form";
@@ -25,7 +26,7 @@ function Signin() {
     mode: "onTouched",
   });
 
-  const { signin } = useAuth();
+  const { signin, isLoading } = useAuth();
 
   const onSubmit = async (values) => {
     await signin(values);
@@ -54,9 +55,15 @@ function Signin() {
           isRequired
           errors={errors}
         />
-        <Button type="submit" variant="primary" className="w-full">
-          ورود
-        </Button>
+        {isLoading ? (
+          <div className="flex justify-center">
+            <SpinnerMini />
+          </div>
+        ) : (
+          <Button type="submit" variant="primary" className="w-full">
+            ورود
+          </Button>
+        )}
       </form>
       <Link href="/signup" className="text-secondary-500 mt-6 text-center">
         ثبت نام در سایت

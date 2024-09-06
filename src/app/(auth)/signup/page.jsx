@@ -7,6 +7,7 @@ import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import Link from "next/link";
 import { useAuth } from "@/context/AuthContext";
+import SpinnerMini from "@/ui/SpinnerMini";
 
 // export const metadata = {
 //   title: "ثبت نام",
@@ -34,7 +35,7 @@ function Signup() {
     mode: "onTouched",
   });
 
-  const { signup } = useAuth();
+  const { signup, isLoading } = useAuth();
 
   const onSubmit = async (values) => {
     await signup(values);
@@ -70,9 +71,15 @@ function Signup() {
           isRequired
           errors={errors}
         />
-        <Button type="submit" variant="primary" className="w-full">
-          تایید
-        </Button>
+        {isLoading ? (
+          <div className="flex justify-center">
+            <SpinnerMini />
+          </div>
+        ) : (
+          <Button type="submit" variant="primary" className="w-full">
+            تایید
+          </Button>
+        )}
       </form>
       <Link href="/signin" className="text-secondary-500 mt-6 text-center">
         ورود به سایت
