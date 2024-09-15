@@ -14,7 +14,10 @@ async function PostList() {
   const options = setCookieOnReq(cookieStore);
   const posts = await getPosts(options);
 
-  return posts.length > 0 ? (
+  if (!posts.length)
+    return <p className="text-lg text-secondary-600">پستی یافت نشد</p>;
+
+  return (
     <div className="grid grid-cols-12 gap-8 mb-10">
       {posts.map((post) => (
         <div
@@ -46,7 +49,7 @@ async function PostList() {
         </div>
       ))}
     </div>
-  ) : null;
+  );
 }
 
 export default PostList;
