@@ -3,17 +3,8 @@ import CoverImage from "./CoverImage";
 import { ClockIcon } from "@heroicons/react/24/outline";
 import Author from "./Author";
 import PostInteraction from "./PostInteraction";
-import { getPosts } from "@/services/postService";
-import { cookies } from "next/headers";
-import setCookieOnReq from "@/utils/setCookieOnReq";
 
-async function PostList() {
-  // await new Promise((res) => setTimeout(() => res(), 1000));
-
-  const cookieStore = cookies();
-  const options = setCookieOnReq(cookieStore);
-  const posts = await getPosts(options);
-
+function PostList({ posts }) {
   if (!posts.length)
     return <p className="text-lg text-secondary-600">پستی یافت نشد</p>;
 

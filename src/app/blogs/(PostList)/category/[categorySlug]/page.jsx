@@ -16,7 +16,7 @@ async function Category({ params }) {
       </p>
     );
 
-  return <PostList />;
+  return <PostList posts={posts} />;
 }
 
 export default Category;
