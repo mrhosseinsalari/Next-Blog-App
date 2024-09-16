@@ -5,9 +5,6 @@ import Author from "./Author";
 import PostInteraction from "./PostInteraction";
 
 function PostList({ posts }) {
-  if (!posts.length)
-    return <p className="text-lg text-secondary-600">پستی یافت نشد</p>;
-
   return (
     <div className="grid grid-cols-12 gap-8 mb-10">
       {posts.map((post) => (
