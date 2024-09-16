@@ -1,6 +1,7 @@
 import { getPostBySlug, getPosts } from "@/services/postService";
 import Image from "next/image";
 import { notFound } from "next/navigation";
+import RelatedPosts from "../_components/RelatedPosts";
 
 export const dynamicParams = false;
 
@@ -31,7 +32,7 @@ async function SinglePost({ params }) {
       </h1>
       <p className="mb-4">{post.briefText}</p>
       <p className="mb-8">{post.text}</p>
-      <div className="relative block aspect-video overflow-hidden rounded-lg">
+      <div className="relative block aspect-video overflow-hidden rounded-lg mb-10">
         <Image
           className="object-cover object-center hover:scale-110 transition-all duration-300 ease-out"
           fill
@@ -39,6 +40,7 @@ async function SinglePost({ params }) {
           alt={post.title}
         />
       </div>
+      {post.related.length > 0 && <RelatedPosts posts={post.related} />}
     </div>
   );
 }
