@@ -4,7 +4,7 @@ import CoverImage from "./CoverImage";
 
 function RelatedPosts({ posts }) {
   return (
-    <div>
+    <div className="mb-8">
       <p className="text-xl mb-4">پست های مرتبط</p>
       <div className="grid gap-6 grid-cols-6">
         {posts.map((post) => (
