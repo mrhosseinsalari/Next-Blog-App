@@ -13,7 +13,8 @@ export async function getPosts(queries, options) {
 
 export async function getPostBySlug(slug) {
   const res = await fetch(
-    `${process.env.NEXT_PUBLIC_BASE_URL}/post/slug/${slug}`
+    `${process.env.NEXT_PUBLIC_BASE_URL}/post/slug/${slug}`,
+    { cache: "no-store" }
   );
   const { data } = await res.json();
   const { post } = data || {};
