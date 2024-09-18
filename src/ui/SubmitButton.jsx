@@ -8,7 +8,7 @@ function SubmitButton({ children, className, ...rest }) {
   return (
     <Button
       disabled={pending}
-      className={`flex items-center justify-center gap-x-4 py-4 ${className}`}
+      className={`flex items-center justify-center gap-x-4 py-4 w-full ${className}`}
       {...rest}
     >
       {children}
