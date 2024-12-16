@@ -33,7 +33,7 @@ function SideBar({ onClose }) {
 
       {/* Sidebar content */}
       <div className="overflow-y-auto flex-auto">
-        <SideBarNavs />
+        <SideBarNavs onClose={onClose} />
         <div className="flex items-center gap-x-2 rounded-2xl font-medium transition-all duration-200 text-secondary-700 py-3 px-4 hover:text-red-400 cursor-pointer">
           <ArrowLeftStartOnRectangleIcon className="ml-4 h-5 w-5" />
           <span>خروج</span>

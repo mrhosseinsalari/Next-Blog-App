@@ -43,14 +43,14 @@ const sidebarNavs = [
   },
 ];
 
-export default function SideBarNavs() {
+export default function SideBarNavs({ onClose }) {
   const pathname = usePathname();
 
   return (
     <ul className="space-y-2">
       {sidebarNavs.map((nav) => {
         return (
-          <li key={nav.id}>
+          <li key={nav.id} onClick={onClose}>
             <Link
               href={nav.href}
               className={classNames(
