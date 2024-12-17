@@ -2,6 +2,7 @@ import Table from "@/ui/Table";
 import { toPersianDigits } from "@/utils/numberFormatter";
 import toLocalDateShort from "@/utils/dateFormatter";
 import truncateText from "@/utils/truncateText";
+import { DeletePost, UpdatePost } from "./Buttons";
 
 const typeStyle = {
   free: {
@@ -15,7 +16,7 @@ const typeStyle = {
 };
 
 function PostRow({ post, index }) {
-  const { title, category, author, createdAt, type } = post;
+  const { _id, title, category, author, createdAt, type } = post;
 
   return (
     <Table.Row>
@@ -29,7 +30,12 @@ function PostRow({ post, index }) {
           {typeStyle[type].label}
         </span>
       </td>
-      <td>actions</td>
+      <td>
+        <div className="flex items-center gap-x-3">
+          <UpdatePost id={_id} />
+          <DeletePost id={_id} />
+        </div>
+      </td>
     </Table.Row>
   );
 }
