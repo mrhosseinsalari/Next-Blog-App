@@ -5,13 +5,18 @@ import ButtonIcon from "@/ui/ButtonIcon";
 import Avatar from "@/ui/Avatar";
 import { useAuth } from "@/context/AuthContext";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Drawer from "@/ui/Drawer";
 import SideBar from "./SideBar";
 
 function Header() {
+  const [isClient, setIsClient] = useState(false);
   const [isOpenDrawer, setIsOpenDrawer] = useState(false);
   const { user, isLoading } = useAuth();
+
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
 
   return (
     <header
@@ -31,12 +36,14 @@ function Header() {
         </span>
 
         <Link href="/profile">
-          <Avatar src={user?.avatarUrl} alt={user?.name} />
+          <Avatar src={user?.avatarUrl} alt={user?.name || "avatar image"} />
         </Link>
 
-        <Drawer open={isOpenDrawer} onClose={() => setIsOpenDrawer(false)}>
-          <SideBar onClose={() => setIsOpenDrawer(false)} />
-        </Drawer>
+        {isClient && (
+          <Drawer open={isOpenDrawer} onClose={() => setIsOpenDrawer(false)}>
+            <SideBar onClose={() => setIsOpenDrawer(false)} />
+          </Drawer>
+        )}
       </div>
     </header>
   );

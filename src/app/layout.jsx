@@ -1,4 +1,3 @@
-import Header from "@/components/Header";
 import vazirFont from "@/constants/localFont";
 import AuthProvider from "@/context/AuthContext";
 import "@/styles/globals.css";

@@ -56,6 +56,7 @@ export default function AuthProvider({ children }) {
       dispatch({ type: "signup", payload: user });
       toast.success(message);
       router.push("/profile");
+      router.refresh();
     } catch (error) {
       const errorMsg = error?.response?.data?.message;
       dispatch({ type: "rejected", payload: errorMsg });
@@ -70,6 +71,7 @@ export default function AuthProvider({ children }) {
       dispatch({ type: "signin", payload: user });
       toast.success(message);
       router.push("/profile");
+      router.refresh();
     } catch (error) {
       const errorMsg = error?.response?.data?.message;
       dispatch({ type: "rejected", payload: errorMsg });
