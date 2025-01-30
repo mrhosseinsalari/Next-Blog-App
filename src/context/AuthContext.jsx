@@ -49,11 +49,11 @@ export default function AuthProvider({ children }) {
     initialState
   );
 
-  async function signup(values) {
+  async function authorizeUser({ authFn, actionType, values }) {
     dispatch({ type: "loading" });
     try {
-      const { user, message } = await signupApi(values);
-      dispatch({ type: "signup", payload: user });
+      const { user, message } = await authFn(values);
+      dispatch({ type: actionType, payload: user });
       toast.success(message);
       router.push("/profile");
       router.refresh();
@@ -64,19 +64,20 @@ export default function AuthProvider({ children }) {
     }
   }
 
+  async function signup(values) {
+    await authorizeUser({
+      authFn: signupApi,
+      actionType: "signup",
+      values,
+    });
+  }
+
   async function signin(values) {
-    dispatch({ type: "loading" });
-    try {
-      const { user, message } = await signinApi(values);
-      dispatch({ type: "signin", payload: user });
-      toast.success(message);
-      router.push("/profile");
-      router.refresh();
-    } catch (error) {
-      const errorMsg = error?.response?.data?.message;
-      dispatch({ type: "rejected", payload: errorMsg });
-      toast.error(errorMsg);
-    }
+    await authorizeUser({
+      authFn: signinApi,
+      actionType: "signin",
+      values,
+    });
   }
 
   async function getUser() {
