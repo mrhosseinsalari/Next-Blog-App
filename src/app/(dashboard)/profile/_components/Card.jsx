@@ -16,7 +16,7 @@ export default function Card({ title, value, type }) {
 
   return (
     <div className="rounded-xl bg-secondary-50 p-2 shadow-sm">
-      <div className="flex p-4 text-secondary-600">
+      <div className="flex justify-center items-center p-4 text-secondary-600">
         {Icon ? <Icon className="h-5 w-5" /> : null}
         <h3 className="mr-2 text-sm font-medium">{title}</h3>
       </div>
