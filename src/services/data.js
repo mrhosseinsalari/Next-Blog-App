@@ -8,7 +8,7 @@ export async function fetchCardData() {
   const cookieStore = cookies();
   const options = setCookieOnReq(cookieStore);
 
-  await new Promise((resolve) => setTimeout(resolve, 3000));
+  // await new Promise((resolve) => setTimeout(resolve, 3000));
 
   try {
     const data = await Promise.all([
