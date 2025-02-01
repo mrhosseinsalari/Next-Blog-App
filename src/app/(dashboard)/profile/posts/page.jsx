@@ -4,9 +4,12 @@ import Spinner from "@/ui/Spinner";
 import Search from "@/ui/Search";
 import { CreatePost } from "./_/components/Buttons";
 import queryString from "query-string";
+import { getPosts } from "@/services/postService";
+import Pagination from "@/ui/Pagination";
 
-function page({ searchParams }) {
+async function Page({ searchParams }) {
   const query = queryString.stringify(searchParams);
+  const { totalPages } = await getPosts(query);
 
   return (
     <div>
@@ -18,8 +21,11 @@ function page({ searchParams }) {
       <Suspense fallback={<Spinner />} key={query}>
         <PostsTable query={query} />
       </Suspense>
+      <div className="mt-5 flex w-full justify-center">
+        <Pagination totalPages={totalPages} />
+      </div>
     </div>
   );
 }
 
-export default page;
+export default Page;

@@ -14,6 +14,9 @@ function Search() {
 
     // url =>
     const newParams = new URLSearchParams(searchParams.toString());
+    newParams.set("page", "1");
+    newParams.set("limit", "6");
+
     if (searchValue) {
       newParams.set("search", searchValue);
     } else {
