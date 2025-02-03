@@ -5,10 +5,13 @@ import * as yup from "yup";
 import { useForm } from "react-hook-form";
 import RHFTextField from "@/ui/RHFTextField";
 import RHFSelect from "@/ui/RHFSelect";
+import useCategories from "@/hooks/useCategories";
 
 const schema = yup.object();
 
 function CreatePostForm() {
+  const { categories } = useCategories();
+
   const {
     register,
     handleSubmit,
@@ -62,7 +65,7 @@ function CreatePostForm() {
         register={register}
         errors={errors}
         isRequired
-        options={[]}
+        options={categories}
       />
     </form>
   );
