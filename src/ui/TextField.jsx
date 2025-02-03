@@ -10,9 +10,8 @@ function TextField({
 }) {
   return (
     <div className="textField">
-      <label htmlFor={name} className="text-secondary-600 text-sm">
-        {label}
-        {isRequired && <span className="text-error">*</span>}
+      <label htmlFor={name} className="mb-2 block text-secondary-700">
+        {label} {isRequired && <span className="text-error">*</span>}
       </label>
       <input
         type={type}

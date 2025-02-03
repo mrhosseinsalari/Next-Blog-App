@@ -16,8 +16,7 @@ export default function RHFTextField({
       className={`textField relative ${hasError ? "textField--invalid" : ""}`}
     >
       <label htmlFor={name} className="mb-2 block text-secondary-700">
-        {label}
-        {isRequired && <span className="text-error">*</span>}
+        {label} {isRequired && <span className="text-error">*</span>}
       </label>
       <input
         autoComplete="off"
