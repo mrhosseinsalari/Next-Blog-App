@@ -1,4 +1,5 @@
 import Breadcrumbs from "@/ui/BreadCrumbs";
+import CreatePostForm from "./_/CreatePostForm";
 
 function Page() {
   const breadcrumbs = [
@@ -16,6 +17,7 @@ function Page() {
   return (
     <div>
       <Breadcrumbs breadcrumbs={breadcrumbs} />
+      <CreatePostForm />
     </div>
   );
 }
