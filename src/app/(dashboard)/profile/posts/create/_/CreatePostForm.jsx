@@ -11,18 +11,46 @@ import Image from "next/image";
 import ButtonIcon from "@/ui/ButtonIcon";
 import { XMarkIcon } from "@heroicons/react/24/outline";
 import FileInput from "@/ui/FileInput";
+import Button from "@/ui/Button";
+import useCreatePost from "./useCreatePost";
+import { useRouter } from "next/navigation";
+import SpinnerMini from "@/ui/SpinnerMini";
 
-const schema = yup.object();
+const schema = yup
+  .object({
+    title: yup
+      .string()
+      .min(5, "حداقل ۵ کاراکتر را وارد کنید")
+      .required("عنوان ضروری است"),
+    briefText: yup
+      .string()
+      .min(10, "حداقل ۱۰ کاراکتر را وارد کنید")
+      .required("توضیحات ضروری است"),
+    text: yup
+      .string()
+      .min(10, "حداقل ۱۰ کاراکتر را وارد کنید")
+      .required("توضیحات ضروری است"),
+    slug: yup.string().required("اسلاگ ضروری است"),
+    readingTime: yup
+      .number()
+      .positive()
+      .integer()
+      .required("زمان مطالعه ضروری است")
+      .typeError("یک عدد را وارد کنید"),
+    category: yup.string().required("دسته بندی ضروری است"),
+  })
+  .required();
 
 function CreatePostForm() {
   const { categories } = useCategories();
   const [coverImageUrl, setCoverImageUrl] = useState(null);
+  const { isCreating, createPost } = useCreatePost();
+  const router = useRouter();
 
   const {
     register,
     handleSubmit,
     formState: { errors },
-    reset,
     control,
     setValue,
   } = useForm({
@@ -30,8 +58,22 @@ function CreatePostForm() {
     resolver: yupResolver(schema),
   });
 
+  const onSubmit = (data) => {
+    const formData = new FormData();
+
+    for (const key in data) {
+      formData.append(key, data[key]);
+    }
+
+    createPost(formData, {
+      onSuccess: () => {
+        router.push("/profile/posts");
+      },
+    });
+  };
+
   return (
-    <form className="form">
+    <form className="form" onSubmit={handleSubmit(onSubmit)}>
       <RHFTextField
         name="title"
         label="عنوان"
@@ -73,7 +115,13 @@ function CreatePostForm() {
         register={register}
         errors={errors}
         isRequired
-        options={categories}
+        options={[
+          {
+            label: "انتخاب کنید",
+            value: "",
+          },
+          ...categories,
+        ]}
       />
       <Controller
         name="coverImage"
@@ -85,6 +133,7 @@ function CreatePostForm() {
               label="انتخاب کاور پست"
               name="coverImage"
               value={value?.fileName}
+              errors={errors}
               onChange={(event) => {
                 const file = event.target.files[0];
                 console.log(file);
@@ -96,6 +145,7 @@ function CreatePostForm() {
           );
         }}
       />
+
       {coverImageUrl && (
         <div className="relative block aspect-video overflow-hidden rounded-lg">
           <Image
@@ -115,6 +165,14 @@ function CreatePostForm() {
             <XMarkIcon />
           </ButtonIcon>
         </div>
+      )}
+
+      {isCreating ? (
+        <SpinnerMini />
+      ) : (
+        <Button variant="primary" type="submit" className="w-full">
+          تایید
+        </Button>
       )}
     </form>
   );

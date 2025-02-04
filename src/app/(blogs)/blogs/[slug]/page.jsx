@@ -1,16 +1,16 @@
-import { getPostBySlug, getPosts } from "@/services/postService";
+import { getPostBySlug } from "@/services/postService";
 import Image from "next/image";
 import { notFound } from "next/navigation";
 import RelatedPosts from "../_components/RelatedPosts";
 import PostComments from "../_components/comment/PostComments";
 
-export const dynamicParams = false;
+// export const dynamicParams = false;
 
-export async function generateStaticParams() {
-  const { posts } = await getPosts();
-  const slugs = posts.map((post) => ({ slug: post.slug }));
-  return slugs;
-}
+// export async function generateStaticParams() {
+//   const { posts } = await getPosts();
+//   const slugs = posts.map((post) => ({ slug: post.slug }));
+//   return slugs;
+// }
 
 export async function generateMetadata({ params }) {
   const post = await getPostBySlug(params.slug);
