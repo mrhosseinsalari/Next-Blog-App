@@ -22,7 +22,7 @@ async function EditPage({ params: { postId } }) {
   return (
     <div>
       <Breadcrumbs breadcrumbs={breadcrumbs} />
-      <CreatePostForm />
+      <CreatePostForm postToEdit={post} />
     </div>
   );
 }
