@@ -6,6 +6,8 @@ import Modal from "@/ui/Modal";
 import { PencilIcon, PlusIcon, TrashIcon } from "@heroicons/react/24/outline";
 import Link from "next/link";
 import { useState } from "react";
+import useDeletePost from "../useDeletePost";
+import { useRouter } from "next/navigation";
 
 export function CreatePost() {
   return (
@@ -22,6 +24,8 @@ export function CreatePost() {
 
 export function DeletePost({ post: { _id, title } }) {
   const [open, setOpen] = useState(false);
+  const { isDeleting, deletePost } = useDeletePost();
+  const router = useRouter();
 
   return (
     <>
@@ -36,8 +40,15 @@ export function DeletePost({ post: { _id, title } }) {
         <ConfirmDelete
           resourceName={`پست ${title}`}
           onClose={() => setOpen(false)}
+          disabled={isDeleting}
           onConfirm={(e) => {
             e.preventDefault();
+            deletePost(_id, {
+              onSuccess: () => {
+                setOpen(false);
+                router.refresh();
+              },
+            });
           }}
         />
       </Modal>
