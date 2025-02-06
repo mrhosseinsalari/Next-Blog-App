@@ -1,8 +1,11 @@
 "use client";
 
 import ButtonIcon from "@/ui/ButtonIcon";
+import ConfirmDelete from "@/ui/ConfirmDelete";
+import Modal from "@/ui/Modal";
 import { PencilIcon, PlusIcon, TrashIcon } from "@heroicons/react/24/outline";
 import Link from "next/link";
+import { useState } from "react";
 
 export function CreatePost() {
   return (
@@ -17,11 +20,28 @@ export function CreatePost() {
   );
 }
 
-export function DeletePost({ id }) {
+export function DeletePost({ post: { _id, title } }) {
+  const [open, setOpen] = useState(false);
+
   return (
-    <ButtonIcon variant="outline" onClick={() => console.log(id)}>
-      <TrashIcon className="!text-error" />
-    </ButtonIcon>
+    <>
+      <ButtonIcon variant="outline" onClick={() => setOpen(true)}>
+        <TrashIcon className="!text-error" />
+      </ButtonIcon>
+      <Modal
+        title={`حذف پست ${title}`}
+        open={open}
+        onClose={() => setOpen(false)}
+      >
+        <ConfirmDelete
+          resourceName={`پست ${title}`}
+          onClose={() => setOpen(false)}
+          onConfirm={(e) => {
+            e.preventDefault();
+          }}
+        />
+      </Modal>
+    </>
   );
 }
 
