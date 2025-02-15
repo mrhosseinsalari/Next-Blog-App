@@ -13,3 +13,9 @@ export async function updateCommentApi({ commentId, data }, options = {}) {
     .patch(`/comment/update/${commentId}`, data, options)
     .then(({ data }) => data.data);
 }
+
+export async function removeCommentApi(id, options) {
+  return http
+    .delete(`/comment/remove/${id}`, options)
+    .then(({ data }) => data.data);
+}

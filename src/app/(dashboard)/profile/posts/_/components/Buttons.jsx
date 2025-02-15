@@ -27,6 +27,16 @@ export function DeletePost({ post: { _id, title } }) {
   const { isDeleting, deletePost } = useDeletePost();
   const router = useRouter();
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    deletePost(_id, {
+      onSuccess: () => {
+        setOpen(false);
+        router.refresh();
+      },
+    });
+  };
+
   return (
     <>
       <ButtonIcon variant="outline" onClick={() => setOpen(true)}>
@@ -37,20 +47,13 @@ export function DeletePost({ post: { _id, title } }) {
         open={open}
         onClose={() => setOpen(false)}
       >
-        <ConfirmDelete
-          resourceName={`پست ${title}`}
-          onClose={() => setOpen(false)}
-          disabled={isDeleting}
-          onConfirm={(e) => {
-            e.preventDefault();
-            deletePost(_id, {
-              onSuccess: () => {
-                setOpen(false);
-                router.refresh();
-              },
-            });
-          }}
-        />
+        <form onSubmit={handleSubmit}>
+          <ConfirmDelete
+            resourceName={`پست ${title}`}
+            onClose={() => setOpen(false)}
+            disabled={isDeleting}
+          />
+        </form>
       </Modal>
     </>
   );
