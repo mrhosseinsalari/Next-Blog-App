@@ -15,8 +15,10 @@ async function Page({ searchParams }) {
 
   return (
     <div>
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 text-secondary-700 mb-12 items-center">
-        <h1 className="font-bold text-xl">لیست پست ها</h1>
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-secondary-700 mb-12 items-center">
+        <h1 className="font-bold text-xl text-center md:text-right">
+          لیست پست ها
+        </h1>
         <Search />
         <CreatePost />
       </div>
