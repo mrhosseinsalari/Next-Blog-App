@@ -2,7 +2,7 @@ import { Suspense } from "react";
 import Spinner from "@/ui/Spinner";
 import CommentsTable from "./_/components/CommentsTable";
 
-async function Page() {
+function Page() {
   return (
     <div>
       <div className="flex items-center justify-between">
