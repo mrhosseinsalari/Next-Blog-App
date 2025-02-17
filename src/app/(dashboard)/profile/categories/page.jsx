@@ -12,7 +12,7 @@ function Page() {
           لیست دسته بندی ها
         </h1>
         <Link
-          href="/profile/categories/create"
+          href="categories/create"
           className="flex gap-x-4 py-3 items-center rounded-lg bg-primary-900 px-4 text-sm font-medium text-secondary-0
           transition-colors hover:bg-primary-700"
         >
