@@ -1,13 +1,10 @@
 "use client";
 
-import {
-  ArrowLeftStartOnRectangleIcon,
-  HomeIcon,
-  XMarkIcon,
-} from "@heroicons/react/24/outline";
+import { HomeIcon, XMarkIcon } from "@heroicons/react/24/outline";
 import Link from "next/link";
 import SideBarNavs from "./SideBarNavs";
 import ButtonIcon from "@/ui/ButtonIcon";
+import Logout from "./Logout";
 
 function SideBar({ onClose }) {
   return (
@@ -34,10 +31,7 @@ function SideBar({ onClose }) {
       {/* Sidebar content */}
       <div className="overflow-y-auto flex-auto">
         <SideBarNavs onClose={onClose} />
-        <div className="flex items-center gap-x-2 rounded-2xl font-medium transition-all duration-200 text-secondary-700 py-3 px-4 hover:text-red-400 cursor-pointer">
-          <ArrowLeftStartOnRectangleIcon className="ml-4 h-5 w-5" />
-          <span>خروج</span>
-        </div>
+        <Logout />
       </div>
     </div>
   );
