@@ -6,6 +6,7 @@ import * as yup from "yup";
 import useEditUserProfile from "./useEditUserProfile";
 import { useRouter } from "next/navigation";
 import SpinnerMini from "@/ui/SpinnerMini";
+import EditAvatarForm from "./EditAvatarForm";
 
 const schema = yup
   .object({
@@ -44,8 +45,8 @@ function EditProfileForm({ userToEdit }) {
   };
 
   return (
-    <>
-      <form className="form mb-8" onSubmit={handleSubmit(onSubmit)}>
+    <div className="space-y-8">
+      <form className="form" onSubmit={handleSubmit(onSubmit)}>
         <RHFTextField
           label="نام و نام خانوادگی"
           name="name"
@@ -69,7 +70,14 @@ function EditProfileForm({ userToEdit }) {
           </Button>
         )}
       </form>
-    </>
+      <EditAvatarForm avatar={avatar} prevAvatarUrl={prevAvatarUrl} />
+      <Button
+        onClick={() => router.push("/profile")}
+        className="bg-yellow-600 hover:bg-yellow-500"
+      >
+        بازگشت به صفحه داشبورد
+      </Button>
+    </div>
   );
 }
 

@@ -193,7 +193,6 @@ function CreatePostForm({ postToEdit = {} }) {
               errors={errors}
               onChange={(event) => {
                 const file = event.target.files[0];
-                console.log(file);
                 onChange(file);
                 setCoverImageUrl(URL.createObjectURL(file));
                 event.target.value = null;

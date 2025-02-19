@@ -49,6 +49,7 @@ const authReducer = (state, { type, payload }) => {
         isAuthenticated: false,
       };
     case "user/edit-profile":
+    case "user/edit-avatar":
       return {
         ...state,
         isLoading: false,

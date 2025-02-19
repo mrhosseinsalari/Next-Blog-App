@@ -23,3 +23,7 @@ export async function logoutApi() {
 export async function editUserProfileApi(data) {
   return http.patch("/user/update", data).then(({ data }) => data.data);
 }
+
+export async function editUserAvatarApi(data) {
+  return http.post("/user/upload-avatar", data).then(({ data }) => data.data);
+}
