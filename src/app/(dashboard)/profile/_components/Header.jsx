@@ -35,7 +35,7 @@ function Header() {
           سلام؛ {user?.name}
         </span>
 
-        <Link href="/profile">
+        <Link href="/profile/edit-profile">
           <Avatar src={user?.avatarUrl} alt={user?.name || "avatar image"} />
         </Link>
 

@@ -48,6 +48,12 @@ const authReducer = (state, { type, payload }) => {
         user: null,
         isAuthenticated: false,
       };
+    case "user/edit-profile":
+      return {
+        ...state,
+        isLoading: false,
+        user: payload,
+      };
     default:
       return state;
   }
@@ -127,7 +133,15 @@ export default function AuthProvider({ children }) {
 
   return (
     <AuthContext.Provider
-      value={{ user, isAuthenticated, isLoading, signup, signin, logout }}
+      value={{
+        user,
+        isAuthenticated,
+        isLoading,
+        signup,
+        signin,
+        logout,
+        dispatch,
+      }}
     >
       {children}
     </AuthContext.Provider>
