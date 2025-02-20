@@ -8,9 +8,9 @@ export async function getPosts(queries = "", options) {
     options
   );
   const { data } = await res.json();
-  const { posts, totalPages } = data || {};
+  const { posts, totalPages, totalPosts } = data || {};
 
-  return { posts, totalPages };
+  return { posts, totalPages, totalPosts };
 }
 
 export async function getPostBySlug(slug) {

@@ -17,6 +17,7 @@ import { useRouter } from "next/navigation";
 import SpinnerMini from "@/ui/SpinnerMini";
 import useEditPost from "./useEditPost";
 import { imageUrlToFile } from "@/utils/fileFormatter";
+import RHFTextArea from "@/ui/RHFTextArea";
 
 const schema = yup
   .object({
@@ -141,7 +142,7 @@ function CreatePostForm({ postToEdit = {} }) {
         errors={errors}
         isRequired
       />
-      <RHFTextField
+      <RHFTextArea
         name="text"
         label="متن"
         register={register}
