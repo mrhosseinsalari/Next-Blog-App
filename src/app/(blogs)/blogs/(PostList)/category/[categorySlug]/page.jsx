@@ -1,4 +1,5 @@
 import { getPosts } from "@/services/postService";
+import Pagination from "@/ui/Pagination";
 import setCookieOnReq from "@/utils/setCookieOnReq";
 import PostList from "app/(blogs)/blogs/_components/PostList";
 import { cookies } from "next/headers";
@@ -13,7 +14,7 @@ async function Category({ params, searchParams }) {
 
   const cookieStore = cookies();
   const options = setCookieOnReq(cookieStore);
-  const { posts } = await getPosts(queries, options);
+  const { posts, totalPages } = await getPosts(queries, options);
 
   if (!posts.length)
     return (
@@ -22,7 +23,14 @@ async function Category({ params, searchParams }) {
       </p>
     );
 
-  return <PostList posts={posts} />;
+  return (
+    <>
+      <PostList posts={posts} />
+      <div className="mt-5 flex w-full justify-center mb-8">
+        <Pagination totalPages={totalPages} />
+      </div>
+    </>
+  );
 }
 
 export default Category;

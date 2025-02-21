@@ -3,6 +3,7 @@ import { cookies } from "next/headers";
 import setCookieOnReq from "@/utils/setCookieOnReq";
 import { getPosts } from "@/services/postService";
 import queryString from "query-string";
+import Pagination from "@/ui/Pagination";
 
 // export const revalidate = 3600;
 
@@ -10,7 +11,7 @@ async function BlogPage({ searchParams }) {
   const queries = queryString.stringify(searchParams);
   const cookieStore = cookies();
   const options = setCookieOnReq(cookieStore);
-  const { posts } = await getPosts(queries, options);
+  const { posts, totalPages } = await getPosts(queries, options);
 
   const { search } = searchParams;
 
@@ -25,6 +26,9 @@ async function BlogPage({ searchParams }) {
         </p>
       ) : null}
       <PostList posts={posts} />
+      <div className="mt-5 flex w-full justify-center mb-8">
+        <Pagination totalPages={totalPages} />
+      </div>
     </>
   );
 }
