@@ -1,4 +1,4 @@
-import Link from "next/link";
+import NavLink from "@/components/NavLink";
 
 async function CategoryList() {
   // await new Promise((res) => setTimeout(() => res(), 1000));
@@ -9,13 +9,15 @@ async function CategoryList() {
   } = await res.json();
 
   return (
-    <ul className="space-y-4">
-      <Link href="/blogs">همه</Link>
+    <ul className="grid grid-cols-3 sm:grid-cols-4 lg:grid-cols-1 gap-2">
+      <li className="text-center lg:text-right">
+        <NavLink path="/blogs">همه</NavLink>
+      </li>
       {categories.map((category) => (
-        <li key={category._id}>
-          <Link href={`/blogs/category/${category.slug}`}>
+        <li key={category._id} className="text-center lg:text-right">
+          <NavLink path={`/blogs/category/${category.slug}`}>
             {category.title}
-          </Link>
+          </NavLink>
         </li>
       ))}
     </ul>

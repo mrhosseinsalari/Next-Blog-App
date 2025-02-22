@@ -39,8 +39,8 @@ function Layout({ children }) {
         <Search />
         <FilterDropDown options={sortOptions} filterField="sort" />
       </div>
-      <div className="grid grid-cols-12 gap-8">
-        <div className="col-span-12 lg:col-span-4 xl:col-span-3 text-secondary-500 space-y-4">
+      <div className="grid grid-cols-12 gap-4 sm:gap-8">
+        <div className="col-span-12 lg:col-span-4 xl:col-span-3 text-secondary-500 mb-6 lg:mb-0">
           <Suspense fallback={<Spinner />}>
             <CategoryList />
           </Suspense>

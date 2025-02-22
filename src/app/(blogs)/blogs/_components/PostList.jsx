@@ -6,11 +6,11 @@ import PostInteraction from "./PostInteraction";
 
 function PostList({ posts }) {
   return (
-    <div className="grid grid-cols-12 gap-8 mb-10">
+    <div className="grid grid-cols-12 gap-4 sm:gap-8 mb-10">
       {posts.map((post) => (
         <div
           key={post._id}
-          className="col-span-12 sm:col-span-6 lg:col-span-4 border
+          className="col-span-12 sm:col-span-6 xl:col-span-4 border
           border-secondary-300 p-2 rounded-lg"
         >
           <CoverImage {...post} />
