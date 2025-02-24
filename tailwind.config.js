@@ -2,6 +2,7 @@
 
 import { fontFamily } from "tailwindcss/defaultTheme";
 import tailwindFormPlugin from "@tailwindcss/forms";
+import tailwindTypographyPlugin from "@tailwindcss/typography";
 
 function withOpacity(variableName) {
   return ({ opacityValue }) => {
@@ -60,5 +61,6 @@ module.exports = {
     tailwindFormPlugin({
       strategy: "class",
     }),
+    tailwindTypographyPlugin,
   ],
 };
