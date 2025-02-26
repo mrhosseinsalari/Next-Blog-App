@@ -43,6 +43,7 @@ function CreateCategoryForm() {
     createCategory(data, {
       onSuccess: () => {
         router.push("/profile/categories");
+        router.refresh();
       },
     });
   };

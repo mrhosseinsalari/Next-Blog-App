@@ -10,6 +10,7 @@ function Logout() {
   const handleClick = async () => {
     await logout();
     router.push("/signin");
+    router.refresh();
   };
 
   return (

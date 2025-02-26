@@ -2,8 +2,10 @@ import Empty from "@/ui/Empty";
 import Table from "@/ui/Table";
 import { getCategoriesApi } from "@/services/categoryService";
 import CategoryRow from "./CategoryRow";
+import { unstable_noStore as noStore } from "next/cache";
 
 async function CategoriesTable() {
+  noStore();
   const { categories } = await getCategoriesApi();
   if (!categories.length) return <Empty resourceName="کاربری" />;
 

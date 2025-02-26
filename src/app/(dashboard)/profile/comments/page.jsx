@@ -2,6 +2,8 @@ import { Suspense } from "react";
 import Spinner from "@/ui/Spinner";
 import CommentsTable from "./_/components/CommentsTable";
 
+export const revalidate = 0;
+
 function Page() {
   return (
     <div>
