@@ -1,0 +1,7 @@
+{
+  "app": "next-blog-app",
+  "port": 3000,
+  "build": {
+    "location": "iran"
+  }
+}

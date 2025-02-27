@@ -9,6 +9,12 @@ const nextConfig = {
         port: "5000",
         pathname: "/uploads/**",
       },
+      {
+        protocol: "https",
+        hostname: "next-blog-app.ir",
+        port: "",
+        pathname: "/uploads/**",
+      },
     ],
   },
   logging: {
