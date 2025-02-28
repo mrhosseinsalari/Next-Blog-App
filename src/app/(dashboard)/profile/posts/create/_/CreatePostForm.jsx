@@ -101,6 +101,11 @@ function CreatePostForm({ postToEdit = {} }) {
     fetchMyApi();
   }, [editId]);
 
+  const onSuccess = () => {
+    router.push("/profile/posts");
+    router.refresh();
+  };
+
   const onSubmit = (data) => {
     const formData = new FormData();
 
@@ -109,20 +114,9 @@ function CreatePostForm({ postToEdit = {} }) {
     }
 
     if (isEditSession) {
-      editPost(
-        { id: editId, data: formData },
-        {
-          onSuccess: () => {
-            router.push("/profile/posts");
-          },
-        }
-      );
+      editPost({ id: editId, data: formData }, { onSuccess });
     } else {
-      createPost(formData, {
-        onSuccess: () => {
-          router.push("/profile/posts");
-        },
-      });
+      createPost(formData, { onSuccess });
     }
   };
 

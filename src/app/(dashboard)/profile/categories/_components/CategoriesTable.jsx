@@ -7,7 +7,7 @@ import { unstable_noStore as noStore } from "next/cache";
 async function CategoriesTable() {
   noStore();
   const { categories } = await getCategoriesApi();
-  if (!categories.length) return <Empty resourceName="کاربری" />;
+  if (!categories.length) return <Empty resourceName="دسته بندی" />;
 
   return (
     <Table>

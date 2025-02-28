@@ -11,7 +11,7 @@ const nextConfig = {
       },
       {
         protocol: "https",
-        hostname: "next-blog-app.ir",
+        hostname: "api.next-blog-app.ir",
         port: "",
         pathname: "/uploads/**",
       },
