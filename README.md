@@ -1,36 +1,80 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+## About Project
 
-## Getting Started
+This is a simple blog application developed using **Next.js**. The project allows users to view, create, and manage blog posts. It serves as an educational example and a foundation for developers interested in learning Next.js and working with APIs.
 
-First, run the development server:
+## Key Features
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- **Categories of Posts**: Blog posts can be viewed based on different categories.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- **Search & Sort of Posts**: Blog posts can be searched by title and description, and sorted by creation date, popularity, and reading time.
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+- **Pagination of Posts**: Blog posts are displayed in a paginated manner, allowing users to easily navigate between posts.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+- **Like & Bookmark of Posts**: Users can like their favorite posts and also bookmark them.
 
-## Learn More
+- **Manage Comments**: Users can comment on posts, reply to others' comments and manage comments.
 
-To learn more about Next.js, take a look at the following resources:
+- **Manage Posts**: Users can create new posts and add them to the blog. They can also edit or delete existing posts.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- **Simple and Responsive UI**: The user interface is designed to be responsive and display well on various devices.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+- **Authentication and Authorization**: Based on user authentication, the desired accesses are given to them.
 
-## Deploy on Vercel
+## Key Libraries and Their Purpose
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- **Next.js**: This framework is used for building React web applications with SSR, SSG and routing capabilities. Some features of next.js used in this project:
+  - **React Server Components**
+  - **Server actions**
+  - **Streaming by Suspense**
+  - **Client Components**
+  - **Protected route with middleware**
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+- **React**: The core library for building the user interface.
+
+- **Axios**: Used for making HTTP requests to the server to send or receive data.
+
+- **Tailwind CSS**: Used for quick and responsive styling of components.
+
+- **React Query**: Used for asynchronous remote states management on the client side.
+
+- **React Hook Form**: Used for efficient form management and validation.
+
+## Preview
+
+To view it online, please click on this link : [Next Blog App](https://next-blog-app.ir/)
+
+## How to Set Up the Project
+
+To set up the project locally, follow these steps:
+
+#### 1) Setup Back-End:
+
+To set up the website's back-end, please refer to the following repository and follow the steps to set up the backend:
+
+[Repository Link](https://github.com/mrhosseinsalari/Blog-App-Backend)
+
+#### 2) Clone the Repository:
+   ```bash
+   git clone https://github.com/mrhosseinsalari/Next-Blog-App.git
+   ```
+   ```bash
+   cd Next-Blog-App
+   ```
+
+#### 3) Install Dependencies:
+   ```bash
+   npm install
+   ```
+
+#### 4) Run the Project:
+   ```bash
+   npm run dev
+   ```
+
+#### - Build the Project and Run the Production Build:
+   ```bash
+   npm run build
+   ```
+   ```bash
+   npm start
+   ```
