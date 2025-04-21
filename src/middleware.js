@@ -2,16 +2,17 @@ import { NextResponse } from "next/server";
 import { middlewareAuth } from "./utils/middlewareAuth";
 
 export async function middleware(req) {
+  const url = req.url;
   const { pathname } = req.nextUrl;
 
   if (pathname.startsWith("/signin") || pathname.startsWith("/signup")) {
     const user = await middlewareAuth(req);
-    if (user) return NextResponse.redirect(new URL("/", req.nextUrl));
+    if (user) return NextResponse.redirect(new URL("/", url));
   }
 
   if (pathname.startsWith("/profile")) {
     const user = await middlewareAuth(req);
-    if (!user) return NextResponse.redirect(new URL("/signin", req.nextUrl));
+    if (!user) return NextResponse.redirect(new URL("/signin", url));
   }
 }
 
